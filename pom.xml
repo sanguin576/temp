@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.dummy</groupId>
+	<artifactId>dummyApp</artifactId>
+	<version>1.1.2</version>
+	<packaging>war</packaging>
+
+	<name>dummyApp</name>
+	<description>dummy Product Administration Service</description>
+
+	<organization>
+		<name>dummy</name>
+		<url>https://www.dummy.com/</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>864625</id>
+			<name>Camilo Gomez</name>
+			<email>camilo.g@tcs.com</email>
+		</developer>
+		<developer>
+			<id>1234</id>
+			<name>John Doe</name>
+			<email>johndoe@dummy.com</email>
+		</developer>
+	</developers>
+	
+	<distributionManagement>
+    	<repository>
+        <id>central</id>
+        <name>dummy-releases</name>
+        <url>https://dummy.jfrog.io/dummy/dummyApp-portal-maven/dev</url>
+    	</repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>dummy-snapshots</name>
+        <url>https://dummy.jfrog.io/dummy/dummyApp-portal-maven/dev</url>
+    </snapshotRepository>
+	</distributionManagement>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<springframework.version>4.1.6.RELEASE</springframework.version>
+		<quartz.version>2.2.1</quartz.version>
+		<build.number>SNAPSHOT</build.number>
+		<sonar.projectKey>Product.Product.dummyAppPortal</sonar.projectKey>
+		<sonar.projectName>Product.Product.dummyAppPortal</sonar.projectName>
+		<sonar.exclusions>**/vendor**/*</sonar.exclusions>
+	</properties>
+
+
+    <profiles>
+      <profile>  
+        <id>dev</id>
+        <activation>
+          <activeByDefault>true</activeByDefault>
+        </activation>
+        <properties>
+          <spring.profiles.active>dev</spring.profiles.active>
+          <project.profile>dev</project.profile>
+
+          <bean.name.pdf.nightly.validation.job.quartzjobbean>providerDirectoryFormService</bean.name.pdf.nightly.validation.job.quartzjobbean>
+          <bean.name.anoc.job.quartzjobbean>portalSchJobService</bean.name.anoc.job.quartzjobbean>
+          <bean.name.check.job.quartzjobbean>portalSchJobService</bean.name.check.job.quartzjobbean>
+     <!-- <bean.name.dp.cache.monitor.job.quartzjobbean>X</bean.name.dp.cache.monitor.job.quartzjobbean> -->
+          <bean.name.eoc.med.job.quartzjobbean>portalSchJobService</bean.name.eoc.med.job.quartzjobbean>
+     <!-- <bean.name.heartbeat.job.quartzjobbean>X</bean.name.heartbeat.job.quartzjobbean> -->    
+          <bean.name.hpms.automation.job.quartzjobbean>HPMSFileLogService</bean.name.hpms.automation.job.quartzjobbean>
+     <!-- <bean.name.hrn.job.quartzjobbean>X</bean.name.hrn.job.quartzjobbean> -->
+          <bean.name.lis.riders.group.job.quartzjobbean>portalSchJobService</bean.name.lis.riders.group.job.quartzjobbean>
+          <bean.name.mlr.job.quartzjobbean>mlrPdfDao2</bean.name.mlr.job.quartzjobbean>
+          <bean.name.pbp.bid.model.audit.job.quartzjobbean>portalSchJobService</bean.name.pbp.bid.model.audit.job.quartzjobbean>
+     <!-- <bean.name.pbp.feed.cleanup.data.job.quartzjobbean>X</bean.name.pbp.feed.cleanup.data.job.quartzjobbean> -->
+          <bean.name.pbp.job.quartzjobbean>portalSchJobService</bean.name.pbp.job.quartzjobbean>
+          <bean.name.pbp.list.job.quartzjobbean>PBPListService</bean.name.pbp.list.job.quartzjobbean>
+          <bean.name.pbp.monitor.job.quartzjobbean>PBPBatchAuditService.class</bean.name.pbp.monitor.job.quartzjobbean>
+          <bean.name.pbp.roll.up.job.quartzjobbean>portalSchJobService</bean.name.pbp.roll.up.job.quartzjobbean>
+          <bean.name.pdf.annual.autoterm.job.quartzjobbean>providerDirectoryFormService</bean.name.pdf.annual.autoterm.job.quartzjobbean>
+          <bean.name.pdf.annual.copy.job.a.quartzjobbean>providerDirectoryFormService</bean.name.pdf.annual.copy.job.a.quartzjobbean>
+          <bean.name.pdf.annual.copy.job.b.quartzjobbean>providerDirectoryFormService</bean.name.pdf.annual.copy.job.b.quartzjobbean>
+          <bean.name.pdf.share.point.import.job.quartzjobbean>spAddPdfRecords</bean.name.pdf.share.point.import.job.quartzjobbean>
+          <bean.name.revision.historyGroup.job.quartzjobbean>sPGetMedGrpRhTblData</bean.name.revision.historyGroup.job.quartzjobbean>
+          <bean.name.summary.of.benefits.job.quartzjobbean>portalSchSBJobService</bean.name.summary.of.benefits.job.quartzjobbean>
+        </properties>      
+      </profile>
+
+      <profile>
+        <id>testQuartz</id>
+        <activation>
+          <activeByDefault>false</activeByDefault>
+        </activation>
+        <properties>
+          <spring.profiles.active>testQuartz</spring.profiles.active>
+          <project.profile>testQuartz</project.profile>
+          
+          <bean.name.pdf.nightly.validation.job.quartzjobbean>providerDirectoryFormServiceOneItemTest</bean.name.pdf.nightly.validation.job.quartzjobbean>
+          <bean.name.anoc.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.anoc.job.quartzjobbean>
+          <bean.name.check.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.check.job.quartzjobbean>
+     <!-- <bean.name.dp.cache.monitor.job.quartzjobbean>X</bean.name.dp.cache.monitor.job.quartzjobbean> -->
+          <bean.name.eoc.med.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.eoc.med.job.quartzjobbean>
+     <!-- <bean.name.heartbeat.job.quartzjobbean>X</bean.name.heartbeat.job.quartzjobbean> -->    
+          <bean.name.hpms.automation.job.quartzjobbean>HPMSFileLogServiceOneItemTest</bean.name.hpms.automation.job.quartzjobbean>
+     <!-- <bean.name.hrn.job.quartzjobbean>X</bean.name.hrn.job.quartzjobbean> -->
+          <bean.name.lis.riders.group.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.lis.riders.group.job.quartzjobbean>
+          <bean.name.mlr.job.quartzjobbean>mlrPdfDao2OneItemTest</bean.name.mlr.job.quartzjobbean>
+          <bean.name.pbp.bid.model.audit.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.pbp.bid.model.audit.job.quartzjobbean>
+     <!-- <bean.name.pbp.feed.cleanup.data.job.quartzjobbean>X</bean.name.pbp.feed.cleanup.data.job.quartzjobbean> -->
+          <bean.name.pbp.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.pbp.job.quartzjobbean>
+          <bean.name.pbp.list.job.quartzjobbean>PBPListServiceOneItemTest</bean.name.pbp.list.job.quartzjobbean>
+          <bean.name.pbp.monitor.job.quartzjobbean>PBPBatchAuditService.class</bean.name.pbp.monitor.job.quartzjobbean>
+          <bean.name.pbp.roll.up.job.quartzjobbean>portalSchJobServiceOneItemTest</bean.name.pbp.roll.up.job.quartzjobbean>
+          <bean.name.pdf.annual.autoterm.job.quartzjobbean>providerDirectoryFormServiceOneItemTest</bean.name.pdf.annual.autoterm.job.quartzjobbean>
+          <bean.name.pdf.annual.copy.job.a.quartzjobbean>providerDirectoryFormServiceOneItemTest</bean.name.pdf.annual.copy.job.a.quartzjobbean>
+          <bean.name.pdf.annual.copy.job.b.quartzjobbean>providerDirectoryFormServiceOneItemTest</bean.name.pdf.annual.copy.job.b.quartzjobbean>
+          <bean.name.pdf.share.point.import.job.quartzjobbean>spAddPdfRecordsOneItemTest</bean.name.pdf.share.point.import.job.quartzjobbean>
+          <bean.name.revision.historyGroup.job.quartzjobbean>sPGetMedGrpRhTblDataOneItemTest</bean.name.revision.historyGroup.job.quartzjobbean>
+          <bean.name.summary.of.benefits.job.quartzjobbean>portalSchSBJobServiceOneItemTest</bean.name.summary.of.benefits.job.quartzjobbean>
+        </properties>
+      </profile>
+    </profiles>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-rest-webmvc</artifactId>
+			<version>2.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>1.7.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.6.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>2.3.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc6</artifactId>
+			<version>11.2.0.3</version>
+			<scope>system</scope>
+			<systemPath>//LOUAPPWDS183/dummyAppFiles/Portal/Tools/2018-01-09/ojdbc6.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-oracle</artifactId>
+			<version>1.2.1.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-core</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.0.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-common</artifactId>
+			<version>2.4.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.owasp.esapi</groupId>
+		    <artifactId>esapi</artifactId>
+		    <version>2.1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sourceforge.jtds</groupId>
+			<artifactId>jtds</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+	<!-- 	<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+		</dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.13.1</version>
+</dependency>
+		
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.8</version>
+		</dependency>
+		<dependency>
+			<groupId>xmlpull</groupId>
+			<artifactId>xmlpull</artifactId>
+			<version>1.1.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<!-- For Unit Testing -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-library</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+		    <groupId>org.powermock</groupId>
+		    <artifactId>powermock-module-junit4</artifactId>
+		    <version>1.6.4</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.powermock</groupId>
+		    <artifactId>powermock-api-mockito</artifactId>
+		    <version>1.6.4</version>
+		    <scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${springframework.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.jayway.jsonpath</groupId>
+			<artifactId>json-path</artifactId>
+			<version>2.4.0</version>
+		</dependency>
+		<!-- -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<!-- Transaction dependency is required with Quartz integration -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${springframework.version}</version>
+		</dependency>
+		<!-- Quartz framework -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>${quartz.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<version>4.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.itextpdf.tool</groupId>
+			<artifactId>xmlworker</artifactId>
+			<version>5.5.13.1</version> <!-- [93495 - MF 6.1-DXR/ANOC] -->
+<!-- 			<version>1.2.1</version> -->
+		</dependency>
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.jtidy</groupId>
+			<artifactId>jtidy</artifactId>
+			<version>r938</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160212</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.healthmarketscience.jackcess</groupId>
+			<artifactId>jackcess</artifactId>
+			<version>2.1.2</version>
+		</dependency> 
+		<!-- https://mvnrepository.com/artifact/org.springframework.vault/spring-vault-core -->
+		<dependency>
+			<groupId>org.springframework.vault</groupId>
+			<artifactId>spring-vault-core</artifactId>
+			<version>1.1.1.RELEASE</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>com.bettercloud</groupId>
+			<artifactId>vault-java-driver</artifactId>
+			<version>4.0.0</version>
+		</dependency> -->
+		<dependency>
+		    <groupId>com.bettercloud</groupId>
+		    <artifactId>vault-java-driver</artifactId>
+		    <version>2.0.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-core</artifactId>
+		    <version>4.3.12.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <version>4.3.12.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>4.3.12.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>2.8.10</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.9.6</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>2.9.6</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.kafka</groupId>
+		    <artifactId>kafka-clients</artifactId>
+		    <version>0.10.2.2</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		    <version>1.0.0.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-commons</artifactId>
+			<version>1.9.0.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.6.Final</version>
+		</dependency>
+ 		
+	</dependencies>
+
+	<!--  <repositories>
+		<repository>
+			<id>mvncentral</id>
+			<url>https://mvnrepository.com/repos/central</url>
+		</repository>
+	</repositories> -->
+
+	<build>
+		<finalName>ROOT</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<manifest>
+						<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+					</manifest>
+					<archive>
+						<manifestEntries>
+							<Specification-Title>${project.name}</Specification-Title>
+							<Specification-Version>${project.version}</Specification-Version>
+							<Implementation-Version>${build.number}</Implementation-Version>
+						</manifestEntries>
+					</archive>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<username>admin</username>
+					<password>password</password>
+					<path>/</path>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<nonFilteredFileExtensions>
+						<nonFilteredFileExtension>xlsx</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+			</plugin>
+		</plugins>
+		
+        <resources>
+          <resource>
+            <directory>src/main/resources</directory>
+          </resource>        
+          <resource>
+            <directory>src/main/resources-filtered</directory>
+            <filtering>true</filtering>
+          </resource>
+        </resources>		
+
+	</build>
+</project>

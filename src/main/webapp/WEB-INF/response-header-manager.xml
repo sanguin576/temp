@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://code.google.com/archive/p/responseheaderfilter/ -->
+<response-header-mapper>
+<!-- 	<mapping url="/reports/*"> -->
+<!-- 		<default> -->
+<!-- 			<response-headers> -->
+<!-- 				<header key="X-Frame-Options" value="SAMEORIGIN" /> -->
+<!-- 			</response-headers> -->
+<!-- 		</default> -->
+<!-- 	</mapping> -->
+<!-- 	<mapping url="/downloader"> -->
+<!-- 		<default> -->
+<!-- 			<response-headers> -->
+<!-- 				<header key="X-Frame-Options" value="SAMEORIGIN" /> -->
+<!-- 			</response-headers> -->
+<!-- 		</default> -->
+<!-- 	</mapping> -->
+	<mapping url="/">
+		<default>
+			<response-headers>
+				<header key="X-Frame-Options" value="SAMEORIGIN" />
+				<header key="X-Content-Type-Options" value="nosniff" />
+				<header key="X-XSS-Protection" value="1" />
+			</response-headers>
+		</default>
+	</mapping>
+</response-header-mapper>

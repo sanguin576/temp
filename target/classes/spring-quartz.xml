@@ -1,0 +1,328 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!-- specifing class and method that is going to be called on a specified time basis -->
+	<bean name="eocMedJobDetailSecure" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.dummy.scheduler.jobs.EocMedJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="anocJobDetailSecure" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="com.dummy.scheduler.jobs.AnocJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pbpJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PBPJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pbpRollUpJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PBPRollUpJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pbpBidModelAuditJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PBPBidModelAuditJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+
+	<bean name="mlrJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.MLRJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="heartbeatJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.HeartbeatJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="hPMSAutomationJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.HPMSAutomationJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<!-- HRN -->
+	<bean name="hrnJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.HRNJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="rhgJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.RevisionHistoryGroupJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="lisRidersGroupJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.LISRidersGroupJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="mpsbOutboundEligibilityGroupJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.MPSBOutboundEligibilityGroupJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="dpCacheMonitorJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.DPCacheMonitorJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="PBPFeedCleanupDataJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PBPFeedCleanupDataJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="PBPMonitorJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PBPMonitorJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pbplistReportNightly" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PBPListJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pdfNightlyValidationJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PDFNightlyValidationJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pdfAnnualAutoTermJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PDFAnnualAutotermJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pdfAnnualCopyJobDetailA" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PDFAnnualCopyJobA" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pdfAnnualCopyJobDetailB" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PDFAnnualCopyJobB" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pdfSharePointImportJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PDFSharePointImportJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="mapdMillimanAuditExhibitJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.MAPDMillimanAuditExhibitJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean name="pdpMillimanAuditExhibitJobDetail" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.PDPMillimanAuditExhibitJob" />
+		<property name="durability" value="true" />
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<!-- cronTrigger for every midnight -->
+	<bean id="cronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="mlrJobDetail" />
+		<property name="cronExpression" value="0 0 5 * * ?" />
+	</bean>
+	
+	<bean id="heartbeatCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="heartbeatJobDetail" />
+		<property name="cronExpression" value="0 0 * * * ?" />
+	</bean>
+	
+	<bean id="hPMSAutomationCronTriggerA" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="hPMSAutomationJobDetail" />
+		<property name="cronExpression" value="0 0 3 * JUN-SEP ?" />
+	</bean>
+	
+	<bean id="hPMSAutomationCronTriggerB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="hPMSAutomationJobDetail" />
+		<property name="cronExpression" value="0 0 3 10 JAN-MAY,OCT-DEC ?" />
+	</bean>
+
+	<bean id="hrnCronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="hrnJobDetail" />
+		<property name="cronExpression" value="0 0 3 * * ?" />
+	</bean>
+
+	<bean id="rhgCronTrigger"  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="rhgJobDetail" />
+		<property name="cronExpression" value="0 0 3 * * ?" />
+	</bean>
+
+	<bean id="lisRidersGroupCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="lisRidersGroupJobDetail" />
+		<property name="cronExpression" value="0 22 1 * * ?" />
+	</bean>
+	
+	<bean id="mpsbOutboundEligibilityGroupCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="mpsbOutboundEligibilityGroupJobDetail" />
+		<property name="cronExpression" value="0 0 6 * * ?" />
+	</bean>
+	
+	<bean id="dpCacheMonitorCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="dpCacheMonitorJobDetail" />
+		<property name="cronExpression" value="0 0 1/4 * * ?" />
+	</bean>
+
+	<bean id="PBPFeedCleanupDataJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="PBPFeedCleanupDataJobDetail" />
+		<property name="cronExpression" value="0 30 23 * * ?" />
+	</bean>
+
+	<bean id="PBPMonitorJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="PBPMonitorJobDetail" />
+		<property name="cronExpression" value="0 0 * * * ?" />
+	</bean>
+
+	<bean id="cronTriggerPBPListReportNightly" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pbplistReportNightly" />
+		<property name="cronExpression" value="0 0 3 * * ?" />
+	</bean>
+
+	<bean id="pdfNightlyValidationCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdfNightlyValidationJobDetail" />
+		<property name="cronExpression" value="0 0 0 * * ?" />
+	</bean>
+	
+	<bean id="pdfAnnualAutotermCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdfAnnualAutoTermJobDetail" />
+		<property name="cronExpression" value="0 0 4 1 JAN ?" />
+	</bean>
+
+	<bean id="pdfAnnualCopyCronTriggerA" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdfAnnualCopyJobDetailA" />
+		<property name="cronExpression" value="0 0 5 18 5 ? *" />
+	</bean>
+	
+	<bean id="pdfAnnualCopyCronTriggerB" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdfAnnualCopyJobDetailB" />
+		<property name="cronExpression" value="0 0 5 ? 6 TUE#1 *" />
+	</bean>
+	
+	<bean id="pdfAnnualCopyCronTriggerC" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdfAnnualCopyJobDetailB" />
+		<property name="cronExpression" value="0 0 5 ? 6 TUE#2 *" />
+	</bean>
+	
+	<bean id="pdfSharePointImportCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdfSharePointImportJobDetail" />
+		<property name="cronExpression" value="* * * ? FEB 6#5" />
+	</bean>
+
+	<!-- Check Job -->	
+	<bean name="checkJobDetails" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value = "com.dummy.scheduler.jobs.CheckJob" />
+		<property name="durability" value="true" />		
+		<property name="group" value="PRTL_RPTS_GRP" />
+	</bean>
+	
+	<bean id="cronTriggerCheckJobDetails" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="checkJobDetails" />
+		<property name="cronExpression" value="0 0 * * * ?" />
+	</bean>
+	
+	<bean id="mapdMillimanAUditExhibitCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="mapdMillimanAuditExhibitJobDetail" />
+		<property name="cronExpression" value="0 30 2 1/1 * ? *" />
+	</bean>
+	
+	<bean id="pdpMillimanAUditExhibitCronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="pdpMillimanAuditExhibitJobDetail" />
+		<property name="cronExpression" value="0 0 2 * * ?" />
+	</bean>
+	
+	<bean id="dbDetails" class="com.dummy.configuration.DbDetails"  init-method="init" />
+
+	<!-- scheduler factory bean to bind,the executing code and time intervals together -->
+	<bean id="portalReportsScheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="eocMedJobDetailSecure" />
+				<ref bean="pbpJobDetail" />
+				<ref bean="pbpRollUpJobDetail"/>
+				<ref bean="pbpBidModelAuditJobDetail"/>
+				<ref bean="mlrJobDetail" />
+				<ref bean="pbplistReportNightly" />
+				<ref bean="anocJobDetailSecure" />
+				<!-- Remove comment in order to add the Email notification of running jobs
+					<ref bean="checkJobDetails" /> 
+				-->
+			</list>
+		</property>
+		<property name="triggers">
+			<list>
+				<ref bean="cronTrigger" />
+				<ref bean="heartbeatCronTrigger" />
+				<ref bean="hPMSAutomationCronTriggerA" />
+				<ref bean="hPMSAutomationCronTriggerB" />
+				<!-- HRN -->
+				<ref bean="hrnCronTrigger" />
+				<ref bean="rhgCronTrigger" />
+				<ref bean="lisRidersGroupCronTrigger" />
+				<ref bean="mpsbOutboundEligibilityGroupCronTrigger" />
+				<ref bean="dpCacheMonitorCronTrigger" />
+				<ref bean="PBPFeedCleanupDataJobTrigger" />
+				<ref bean="PBPMonitorJobTrigger" />
+				<ref bean="cronTriggerPBPListReportNightly" />
+				<ref bean="pdfNightlyValidationCronTrigger" />
+				<ref bean="pdfAnnualAutotermCronTrigger" />
+				<ref bean="pdfAnnualCopyCronTriggerA" />
+				<ref bean="pdfAnnualCopyCronTriggerB" />
+				<ref bean="pdfAnnualCopyCronTriggerC" />
+				<ref bean="pdfSharePointImportCronTrigger" />
+				<ref bean="mapdMillimanAUditExhibitCronTrigger" />
+				<ref bean="pdpMillimanAUditExhibitCronTrigger" />
+				<!-- Remove comment in order to add the Email notification of running jobs
+					<ref bean="cronTriggerCheckJobDetails" /> 
+				-->
+			</list>
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.scheduler.instanceId">AUTO</prop>
+				<prop key="org.quartz.scheduler.instanceName">MyClusteredScheduler</prop>
+				<prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>
+				<prop key="org.quartz.jobStore.driverDelegateClass">org.quartz.impl.jdbcjobstore.StdJDBCDelegate</prop>
+				<prop key="org.quartz.jobStore.tablePrefix">QRTZ_</prop>
+				<prop key="org.quartz.jobStore.isClustered">#{dbDetails.clustered}</prop>
+				<prop key="org.quartz.jobStore.clusterCheckinInterval">15000</prop>
+				<prop key="org.quartz.jobStore.misfireThreshold">60000</prop>
+			</props>
+		</property>
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+	<bean id="dataSource"   class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url" value="#{dbDetails.url}" />
+		<property name="username" value="#{dbDetails.userName}" />
+		<property name="password" value="#{dbDetails.password}" />
+	</bean>
+</beans>
